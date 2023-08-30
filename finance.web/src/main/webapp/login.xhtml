@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+   <title>login</title>
+</h:head>
+<h:body style="background-color: antiquewhite;">
+   <h3>Приложении JSF "Домашняя бухгалтерия"</h3>
+   <p>Описание авторизации:</p>
+   <ul>
+      <li><b>Authentication:</b> когда вы входите в систему, ваши учетные
+         данные проверяются по базе данных на соответствие. Если совпадение найдено
+         вам разрешено продолжить (вы прошли аутентификацию); если нет, получите доступ
+         отказано.</li>
+      <li><b>Authorization:</b> Как только вы пройдете аутентификацию, вы должны
+         быть авторизованным для доступа к определенному контенту. Например, общий
+         пользователь может быть не авторизован для доступа к разделам веб-сайта,
+         предназначенным только для администраторов. Авторизация основана на
+         идее, что учетные записи пользователей принадлежат к одной или нескольким группам или
+         роли. Это членство приводит к получению разрешения на просмотр определенных
+         части веб-сайта.</li>
+   </ul>
+   <h:form>
+      <h3>JSF Login</h3>
+      <h:outputText value="Username" />
+      <h:inputText id="username" value="#{login.user}"></h:inputText>
+      <h:message for="username"></h:message>
+      <br></br><br></br>
+
+      <h:outputText value="Password" />
+      <h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
+      <h:message for="password"></h:message>
+      <br></br><br></br>
+
+      <h:commandButton action="#{login.validateUsernamePassword}"
+                       value="Login"></h:commandButton>
+   </h:form>
+</h:body>
+</html>

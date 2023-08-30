@@ -1,0 +1,9 @@
+<application>
+    <description>Родительский проект</description>
+    <module>
+        <web>
+            <web-uri>finance.web-1.0-SNAPSHOT.war</web-uri>
+            <context-root>/finance</context-root>
+        </web>
+    </module>
+</application>

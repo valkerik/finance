@@ -1,11 +1,7 @@
 package ru.finance.util;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
 
 public class Settings {
     public static final File SAVE_DIR = new File("saves/");
