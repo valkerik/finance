@@ -11,3 +11,4 @@
 - JDK 8 или выше
 - Maven
 - Сервер приложений GlassFish 5
+- BD PostgreSQL
