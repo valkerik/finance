@@ -4,37 +4,67 @@
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
    <title>login</title>
+   <style type="text/css">
+      body {
+         background-color: antiquewhite;
+         font-family: Arial, sans-serif;
+         margin: 20px;
+      }
+      h3 {
+         color: #003399;
+      }
+      p {
+         font-weight: bold;
+      }
+      ul {
+         list-style-type: disc;
+         margin-left: 20px;
+      }
+      form {
+         margin-top: 20px;
+      }
+      label {
+         display: block;
+         margin-bottom: 5px;
+      }
+      input[type="text"], input[type="password"] {
+         width: 200px;
+         padding: 5px;
+         margin-bottom: 10px;
+      }
+      .error {
+         color: red;
+         margin-top: -10px;
+         margin-bottom: 10px;
+      }
+      .submit-button {
+         background-color: #003399;
+         color: #fff;
+         padding: 10px 20px;
+         border: none;
+         cursor: pointer;
+      }
+   </style>
 </h:head>
-<h:body style="background-color: antiquewhite;">
-   <h3>Приложении JSF "Домашняя бухгалтерия"</h3>
+<h:body>
+   <h3>Приложение JSF "Домашняя бухгалтерия"</h3>
    <p>Описание авторизации:</p>
    <ul>
-      <li><b>Authentication:</b> когда вы входите в систему, ваши учетные
-         данные проверяются по базе данных на соответствие. Если совпадение найдено
-         вам разрешено продолжить (вы прошли аутентификацию); если нет, получите доступ
-         отказано.</li>
-      <li><b>Authorization:</b> Как только вы пройдете аутентификацию, вы должны
-         быть авторизованным для доступа к определенному контенту. Например, общий
-         пользователь может быть не авторизован для доступа к разделам веб-сайта,
-         предназначенным только для администраторов. Авторизация основана на
-         идее, что учетные записи пользователей принадлежат к одной или нескольким группам или
-         роли. Это членство приводит к получению разрешения на просмотр определенных
-         части веб-сайта.</li>
+      <li><b>Authentication:</b> когда вы входите в систему, ваши учетные данные проверяются по базе данных на соответствие. Если совпадение найдено, вам разрешено продолжить (вы прошли аутентификацию); если нет, доступ будет отказан.</li>
+      <li><b>Authorization:</b> как только вы пройдете аутентификацию, вы должны быть авторизованы для доступа к определенному контенту. Например, обычный пользователь может быть не авторизован для доступа к разделам веб-сайта, предназначенным только для администраторов. Авторизация основана на идее, что учетные записи пользователей принадлежат к одной или нескольким группам или ролям. Это членство приводит к получению разрешения на просмотр определенных частей веб-сайта.</li>
    </ul>
    <h:form>
       <h3>JSF Login</h3>
-      <h:outputText value="Username" />
-      <h:inputText id="username" value="#{login.user}"></h:inputText>
-      <h:message for="username"></h:message>
-      <br></br><br></br>
+      <label for="username">Username</label>
+      <h:inputText id="username" value="#{login.user}" required="true"></h:inputText>
+      <h:message for="username" styleClass="error"></h:message>
 
-      <h:outputText value="Password" />
-      <h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
-      <h:message for="password"></h:message>
-      <br></br><br></br>
+      <label for="password">Password</label>
+      <h:inputSecret id="password" value="#{login.pwd}" required="true"></h:inputSecret>
+      <h:message for="password" styleClass="error"></h:message>
 
-      <h:commandButton action="#{login.validateUsernamePassword}"
-                       value="Login"></h:commandButton>
+      <br />
+      <h:commandButton action="#{login.validateUsernamePassword}" value="Login" styleClass="submit-button"></h:commandButton>
    </h:form>
 </h:body>
 </html>
