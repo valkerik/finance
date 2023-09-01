@@ -2,6 +2,7 @@ package ru.finance.entity;
 
 import ru.finance.exception.ModelException;
 import ru.finance.exception.TitleException;
+import ru.finance.save_load.SaveData;
 
 import java.util.Objects;
 
@@ -69,6 +70,25 @@ public class Currency {
 
     public double getRateByCurrensy(Currency currency){
         return rate/currency.rate;
+    }
+
+    public void postAdd(SaveData saveData){
+        clearBase(saveData);
+    }
+
+    public void postEdit(SaveData saveData){
+        clearBase(saveData);
+    }
+
+    private void clearBase(SaveData saveData){
+        if(isBase){
+            rate = 1;
+            for (Currency currency : saveData.getCurrencies()) {
+                if(!this.equals(currency)){
+                    currency.setBase(false);
+                }
+            }
+        }
     }
 
     @Override

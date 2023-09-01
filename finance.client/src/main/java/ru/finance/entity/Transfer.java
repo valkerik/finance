@@ -2,6 +2,7 @@ package ru.finance.entity;
 
 import ru.finance.exception.ModelException;
 import ru.finance.exception.TitleException;
+import ru.finance.save_load.SaveData;
 
 import java.util.Date;
 
@@ -86,6 +87,22 @@ public class Transfer {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public void postAdd(SaveData saveData){
+        setAmounts(saveData);
+    }
+    public void postEdit(SaveData saveData){
+        setAmounts(saveData);
+    }
+    public void postRemove(SaveData saveData){
+        setAmounts(saveData);
+    }
+
+    private void setAmounts(SaveData saveData){
+        for (Account a : saveData.getAccounts()) {
+            a.setAmountFromTransactionsAndTransfers(saveData.getTransactions(), saveData.getTransfers());
+        }
     }
 
     @Override

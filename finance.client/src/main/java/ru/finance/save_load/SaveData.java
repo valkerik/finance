@@ -6,6 +6,7 @@ import ru.finance.xmlelement.SaveLoadXML;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 public class SaveData {
@@ -128,5 +129,15 @@ public class SaveData {
             if(filter.checkDate(t.getDate())) list.add(t);
         }
         return list;
+    }
+
+    public void updateCurrencies() throws Exception {
+        HashMap<String, Double> rates = RateCurrency.getRatesFromNet(getBaseCurrency());
+        for (Currency currency : currencies) {
+           currency.setRate(rates.get(currency.getCode()));
+        }
+        for (Account account : accounts) {
+            account.getCurrency().setRate(rates.get(account.getCurrency().getCode()));
+        }
     }
 }
