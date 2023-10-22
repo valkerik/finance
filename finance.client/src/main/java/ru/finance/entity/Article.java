@@ -2,9 +2,20 @@ package ru.finance.entity;
 
 import ru.finance.exception.ModelException;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity(name = "article")
+@NamedQueries({
+        @NamedQuery(name="getAllArticles", query = "select t from article t")
+})
 public class Article{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "article_ID")
+    private Long id;
+
     private String title;
 
     public Article() {

@@ -5,19 +5,16 @@
     <parent>
         <groupId>io.openliberty.guides</groupId>
         <artifactId>guide-maven-multimodules</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
     <!-- tag::packaging[] -->
     <groupId>io.openliberty.guides</groupId>
-    <artifactId>guide-maven-multimodules-ear</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <!-- tag::packagingType[] -->
+    <artifactId>ear</artifactId>
+    <version>${parent.version}</version>
     <packaging>ear</packaging>
-    <!-- end::packagingType[] -->
-    <!-- end::packaging[] -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -36,7 +33,7 @@
         <dependency>
             <groupId>io.openliberty.guides</groupId>
             <artifactId>finance.client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${parent.version}</version>
             <type>jar</type>
         </dependency>
         <!-- end::dependency-jar[] -->
@@ -44,7 +41,7 @@
         <dependency>
             <groupId>io.openliberty.guides</groupId>
             <artifactId>finance.web</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${parent.version}</version>
             <!-- tag::warType[] -->
             <type>war</type>
             <!-- end::warType[] -->
@@ -121,14 +118,14 @@
                         <jarModule>
                             <groupId>io.openliberty.guides</groupId>
                             <artifactId>finance.client</artifactId>
-                            <uri>/finance.client-1.0-SNAPSHOT.jar</uri>
+                            <uri>/finance.client-1.0.jar</uri>
                         </jarModule>
                         <!-- end::jarModule[] -->
                         <!-- tag::webModule[] -->
                         <webModule>
                             <groupId>io.openliberty.guides</groupId>
                             <artifactId>finance.web</artifactId>
-                            <uri>/finance.web-1.0-SNAPSHOT.war</uri>
+                            <uri>/finance.web-1.0.war</uri>
                             <!-- Set custom context root -->
                             <!-- tag::contextRoot[] -->
                             <contextRoot>/converter</contextRoot>
