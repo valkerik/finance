@@ -12,9 +12,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>finance.client</module>
         <module>finance.web</module>
-        <module>ear</module>
+        <module>finance.app</module>
+        <module>finance.client</module>
+
     </modules>
 
     <dependencies>
@@ -25,11 +26,6 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.openliberty.guides</groupId>-->
-<!--            <artifactId>finance.client</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.postgresql</groupId>

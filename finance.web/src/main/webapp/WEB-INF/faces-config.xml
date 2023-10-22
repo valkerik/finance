@@ -11,6 +11,13 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
+    <managed-bean>
+        <managed-bean-name>operationListBean</managed-bean-name>
+        <managed-bean-class>ru.finance.bean.OperationListBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>

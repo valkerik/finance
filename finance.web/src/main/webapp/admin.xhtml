@@ -2,9 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
    <title>Facelet Title</title>
+   <style>
+      .custom-table {
+         border-collapse: collapse;
+         width: 100%;
+      }
+      .custom-table th, .custom-table td {
+         border: 1px solid black;
+         padding: 8px;
+         text-align: left;
+      }
+   </style>
 </h:head>
 <h:body>
    <h:form>
@@ -12,5 +24,38 @@
 
       <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
    </h:form>
+   <br/>
+   <a href="list">list</a>
+
+   <br/>
+
+   <h1>Список всех операций</h1>
+
+   <h:dataTable value="#{operationListBean.getAllOperations()}" var="operation" class="custom-table">
+      <h:column>
+         <f:facet name="header">ID</f:facet>
+         #{operation.id}
+      </h:column>
+      <h:column>
+         <f:facet name="header">Date</f:facet>
+         #{operation.date}
+      </h:column>
+      <h:column>
+         <f:facet name="header">Operation Type</f:facet>
+         <h:outputText value="#{operation.operationType}" style="background-color: #{operation.operationType eq 'INCOME' ? 'green' : 'red'};" />
+      </h:column>
+      <h:column>
+         <f:facet name="header">Title</f:facet>
+         #{operation.title}
+      </h:column>
+      <h:column>
+         <f:facet name="header">Amount</f:facet>
+         #{operation.amount}
+      </h:column>
+      <h:column>
+         <f:facet name="header">Comment</f:facet>
+         #{operation.comment}
+      </h:column>
+   </h:dataTable>
 </h:body>
 </html>

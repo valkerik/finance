@@ -11,9 +11,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- tag::packaging[] -->
-    <groupId>io.openliberty.guides</groupId>
-    <artifactId>ear</artifactId>
-    <version>${parent.version}</version>
+    <artifactId>finance.app</artifactId>
+    <version>1.0</version>
     <packaging>ear</packaging>
 
     <properties>
@@ -21,33 +20,26 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <!-- Liberty configuration -->
+
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
     </properties>
 
     <dependencies>
-        <!-- web and jar modules as dependencies -->
-        <!-- tag::dependencies[] -->
-        <!-- tag::dependency-jar[] -->
+
         <dependency>
             <groupId>io.openliberty.guides</groupId>
             <artifactId>finance.client</artifactId>
-            <version>${parent.version}</version>
+            <version>1.0</version>
             <type>jar</type>
         </dependency>
-        <!-- end::dependency-jar[] -->
-        <!-- tag::dependency-war[] -->
+
         <dependency>
             <groupId>io.openliberty.guides</groupId>
             <artifactId>finance.web</artifactId>
-            <version>${parent.version}</version>
-            <!-- tag::warType[] -->
+            <version>1.0</version>
             <type>war</type>
-            <!-- end::warType[] -->
         </dependency>
-        <!-- end::dependency-war[] -->
-        <!-- end::dependencies[] -->
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -120,18 +112,14 @@
                             <artifactId>finance.client</artifactId>
                             <uri>/finance.client-1.0.jar</uri>
                         </jarModule>
-                        <!-- end::jarModule[] -->
-                        <!-- tag::webModule[] -->
+
                         <webModule>
                             <groupId>io.openliberty.guides</groupId>
                             <artifactId>finance.web</artifactId>
                             <uri>/finance.web-1.0.war</uri>
-                            <!-- Set custom context root -->
-                            <!-- tag::contextRoot[] -->
                             <contextRoot>/converter</contextRoot>
-                            <!-- end::contextRoot[] -->
                         </webModule>
-                        <!-- end::webModule[] -->
+
                     </modules>
                 </configuration>
             </plugin>

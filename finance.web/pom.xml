@@ -12,9 +12,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>io.openliberty.guides</groupId>
     <artifactId>finance.web</artifactId>
     <packaging>war</packaging>
-    <version>${parent.version}</version>
+    <version>1.0</version>
     <name>finance.web</name>
     <url>http://maven.apache.org</url>
 

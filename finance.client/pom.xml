@@ -12,8 +12,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>io.openliberty.guides</groupId>
     <artifactId>finance.client</artifactId>
-    <version>${parent.version}</version>
+    <version>1.0</version>
     <name>finance.client</name>
 
 
@@ -42,7 +43,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
+            <version>LATEST</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
