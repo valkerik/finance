@@ -73,6 +73,10 @@ public class Operation implements Serializable {
         return operationType;
     }
 
+    public String getOperationTypeString() {
+        return operationType.name();
+    }
+
     public void setOperationType(OperationType operationType) {
         this.operationType = operationType;
     }

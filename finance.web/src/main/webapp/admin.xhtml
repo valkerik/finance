@@ -73,7 +73,8 @@
          <h:commandButton value="Delete" action="#{operationListBean.deleteOperation(operation.id)}" />
       </h:column>
    </h:dataTable>
-
+      <br/>
+      <h:outputText value="Total: #{operationListBean.calculateTotal()}" />
    </h:form>
 </h:body>
 </html>

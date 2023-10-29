@@ -78,4 +78,17 @@ public class OperationListBean implements Serializable {
         editOperation = null;
         FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
+
+    public String calculateTotal() {
+       double total = 0.0;
+        List<Operation> operations = getAllOperations();
+        for (Operation operation : operations) {
+            if (operation.getOperationTypeString().equals("INCOME")) {
+                total += operation.getAmount();
+            } else if (operation.getOperationTypeString().equals("EXPENSE")) {
+                total -= operation.getAmount();
+            }
+        }
+        return String.valueOf(total);
+    }
 }
