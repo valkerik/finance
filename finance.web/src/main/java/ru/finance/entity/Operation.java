@@ -19,7 +19,7 @@ public class Operation implements Serializable {
     private long id;
 
     @Column(name = "date", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     @Enumerated(EnumType.STRING)

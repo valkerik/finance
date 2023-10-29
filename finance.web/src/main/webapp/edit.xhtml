@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <title>Edit Operation</title>
+</h:head>
+<h:body>
+
+   <f:metadata>
+      <f:viewParam name="id" value="#{operationListBean.operationId}" converter="javax.faces.Long" />
+   </f:metadata>
+
+   <h:form rendered="#{not empty operationListBean.editOperation}">
+      <h1>Edit Operation</h1>
+      <h:inputHidden value="#{operationListBean.editOperation.id}" />
+      <h:inputText id="title" value="#{operationListBean.editOperation.title}" placeholder="Title" /><label for="title">Title:</label><br />
+      <h:inputText id="amount" value="#{operationListBean.editOperation.amount}" placeholder="Amount" /><label for="amount">Amount:</label><br />
+      <h:inputText id="comment" value="#{operationListBean.editOperation.comment}" placeholder="Comment" /> <label for="comment">Comment:</label><br />
+
+      <label for="operationType">Operation Type:</label>
+      <h:selectOneMenu id="operationType" value="#{operationListBean.editOperation.operationType}">
+         <f:selectItem itemValue="INCOME" itemLabel="Income" />
+         <f:selectItem itemValue="EXPENSE" itemLabel="Expense" />
+      </h:selectOneMenu><br />
+
+      <h:outputLabel for="date" value="Date:(yyyy-MM-dd)" />
+      <h:inputText id="date" value="#{operationListBean.editOperation.date}">
+         <f:convertDateTime pattern="yyyy-MM-dd" timeZone="UTC" />
+      </h:inputText><br />
+
+      <h:commandButton value="Save Changes" action="#{operationListBean.updateOperation}" />
+   </h:form>
+</h:body>
+</html>

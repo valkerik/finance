@@ -21,31 +21,23 @@
 <h:body>
    <h:form>
       <p>Welcome #{login.user}</p>
-
       <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
-
    <br/>
    <a href="list">list</a>
    <br/>
-
-
-      <p>Добавить новую операцию </p>
+      <p>Добавить новую операцию:  </p>
       <br/>
-      <h:inputText value="#{operationListBean.newOperation.title}" placeholder="Title" /><br />
-      <h:inputText value="#{operationListBean.newOperation.amount}" placeholder="Amount" /><br />
-      <h:inputText value="#{operationListBean.newOperation.comment}" placeholder="Comment" /><br />
+      <label>Название операции:</label><h:inputText value="#{operationListBean.newOperation.title}" placeholder="Title" /><br />
+      <label>Amount:</label><h:inputText value="#{operationListBean.newOperation.amount}" placeholder="Amount" /><br />
+      <label>Комментарий:</label> <h:inputText value="#{operationListBean.newOperation.comment}" placeholder="Comment" /><br />
+      <label>Тип</label>
       <h:selectOneMenu value="#{operationListBean.newOperation.operationType}">
-         <f:selectItem itemValue="INCOME" itemLabel="Income" />
-         <f:selectItem itemValue="EXPENSE" itemLabel="Expense" />
+         <f:selectItem itemValue="INCOME" itemLabel="Доход" />
+         <f:selectItem itemValue="EXPENSE" itemLabel="Расход" />
       </h:selectOneMenu><br />
       <h:commandButton value="Add Operation" action="#{operationListBean.addOperation}" />
-
-
-
    <br/>
-
    <h1>Список всех операций</h1>
-
    <h:dataTable value="#{operationListBean.getAllOperations()}" var="operation" class="custom-table">
       <h:column>
          <f:facet name="header">ID</f:facet>
@@ -71,6 +63,7 @@
          <f:facet name="header">Comment</f:facet>
          #{operation.comment}
       </h:column>
+
       <h:column>
          <f:facet name="header">Edit</f:facet>
          <h:commandButton value="Edit" action="#{operationListBean.editOperation(operation.id)}" />
@@ -80,6 +73,7 @@
          <h:commandButton value="Delete" action="#{operationListBean.deleteOperation(operation.id)}" />
       </h:column>
    </h:dataTable>
+
    </h:form>
 </h:body>
 </html>

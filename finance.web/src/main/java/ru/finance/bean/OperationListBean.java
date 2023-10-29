@@ -5,19 +5,49 @@ import ru.finance.entity.Operation;
 import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 @Stateless
 @Local
-public class OperationListBean {
+public class OperationListBean implements Serializable {
     @EJB
     private OperationBean operationBean;
 
     private Operation newOperation = new Operation();
+    private Operation editOperation;
+    private long operationId;
+
+    public long getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(long operationId) {
+        this.operationId = operationId;
+        this.editOperation = operationBean.get(operationId);
+    }
+
+    public Operation getEditOperation() {
+        return editOperation;
+    }
+
+    public void setEditOperation(Operation editOperation) {
+        this.editOperation = editOperation;
+    }
 
     public List<Operation> getAllOperations() {
-        return operationBean.getAll();
+        List<Operation> operations = operationBean.getAll();
+        operations.sort(new Comparator<Operation>() {
+            @Override
+            public int compare(Operation o1, Operation o2) {
+                return Long.compare(o1.getId(), o2.getId());
+            }
+        });
+        return operations;
     }
 
     public Operation getNewOperation() {
@@ -34,14 +64,18 @@ public class OperationListBean {
         newOperation = new Operation(); // Очищаем новую операцию после добавления
     }
 
-    public void editOperation(long id) {
-        Operation operation = operationBean.get(id);
-        // Реализуйте логику редактирования операции, если необходимо
-
-    }
-
     public void deleteOperation(long id) {
         operationBean.delete(id);
     }
 
+    public void editOperation(long id) throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("operationId", id);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("edit.xhtml?id=" + id);
+    }
+
+    public void updateOperation()throws IOException {
+        operationBean.update(editOperation); // Вызываем метод обновления в OperationBean
+        editOperation = null;
+        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+    }
 }
