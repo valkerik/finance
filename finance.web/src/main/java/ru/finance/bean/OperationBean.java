@@ -1,7 +1,6 @@
 package ru.finance.bean;
 
 import ru.finance.entity.Operation;
-import ru.finance.entity.Users;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

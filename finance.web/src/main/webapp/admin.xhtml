@@ -23,9 +23,24 @@
       <p>Welcome #{login.user}</p>
 
       <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
-   </h:form>
+
    <br/>
    <a href="list">list</a>
+   <br/>
+
+
+      <p>Добавить новую операцию </p>
+      <br/>
+      <h:inputText value="#{operationListBean.newOperation.title}" placeholder="Title" /><br />
+      <h:inputText value="#{operationListBean.newOperation.amount}" placeholder="Amount" /><br />
+      <h:inputText value="#{operationListBean.newOperation.comment}" placeholder="Comment" /><br />
+      <h:selectOneMenu value="#{operationListBean.newOperation.operationType}">
+         <f:selectItem itemValue="INCOME" itemLabel="Income" />
+         <f:selectItem itemValue="EXPENSE" itemLabel="Expense" />
+      </h:selectOneMenu><br />
+      <h:commandButton value="Add Operation" action="#{operationListBean.addOperation}" />
+
+
 
    <br/>
 
@@ -56,6 +71,15 @@
          <f:facet name="header">Comment</f:facet>
          #{operation.comment}
       </h:column>
+      <h:column>
+         <f:facet name="header">Edit</f:facet>
+         <h:commandButton value="Edit" action="#{operationListBean.editOperation(operation.id)}" />
+      </h:column>
+      <h:column>
+         <f:facet name="header">Delete</f:facet>
+         <h:commandButton value="Delete" action="#{operationListBean.deleteOperation(operation.id)}" />
+      </h:column>
    </h:dataTable>
+   </h:form>
 </h:body>
 </html>
