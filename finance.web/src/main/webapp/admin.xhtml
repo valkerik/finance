@@ -75,6 +75,11 @@
    </h:dataTable>
       <br/>
       <h:outputText value="Total: #{operationListBean.calculateTotal()}" />
+      <br/>
+      <h:outputText value="Сумма всех доходов: #{operationListBean.getTotalIncome()}" />
+      <br/>
+      <h:outputText value="Сумма всех расходов: #{operationListBean.getTotalExpense()}" />
+      <br/>
    </h:form>
 </h:body>
 </html>

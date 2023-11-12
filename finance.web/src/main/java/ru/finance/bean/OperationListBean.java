@@ -15,6 +15,8 @@ import java.util.List;
 @Stateless
 @Local
 public class OperationListBean implements Serializable {
+
+    private static final String RUB = " рублей.";
     @EJB
     private OperationBean operationBean;
 
@@ -89,6 +91,32 @@ public class OperationListBean implements Serializable {
                 total -= operation.getAmount();
             }
         }
-        return String.valueOf(total);
+        return String.valueOf(total) + RUB;
     }
+
+    //доходы
+    public String getTotalIncome() {
+        double totalIncome = 0.0;
+        List<Operation> operations = getAllOperations();
+        for (Operation operation : operations) {
+            if (operation.getOperationTypeString().equals("INCOME")) {
+                totalIncome += operation.getAmount();
+            }
+        }
+        return String.valueOf(totalIncome) + RUB ;
+    }
+
+
+    //расходы
+    public String getTotalExpense() {
+        double totalExpense = 0.0;
+        List<Operation> operations = getAllOperations();
+        for (Operation operation : operations) {
+            if (operation.getOperationTypeString().equals("EXPENSE")) {
+                totalExpense += operation.getAmount();
+            }
+        }
+        return String.valueOf(totalExpense) + RUB;
+    }
+
 }
